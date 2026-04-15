@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+/* ─── Reset ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background-color: #0a0a0a;
+  color: #eeeeee;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: #4ade80; color: #000; }
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #4ade80; }
+
+/* ─── Bento Card ─────────────────────────────────────── */
+.bento-card {
+  background-color: #111111;
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 24px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-card:hover {
+  border-color: rgba(74, 222, 128, 0.3);
+  box-shadow: 0 0 28px rgba(74, 222, 128, 0.1), 0 0 60px rgba(74, 222, 128, 0.04);
+}
+
+/* ─── Terminal Header ────────────────────────────────── */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+/* ─── Neon Text ──────────────────────────────────────── */
+.neon-text {
+  color: #4ade80;
+  text-shadow: 0 0 12px rgba(74, 222, 128, 0.5), 0 0 24px rgba(74, 222, 128, 0.2);
+}
+
+/* ─── Tag Pill ───────────────────────────────────────── */
+.tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  background: #1a1a1a;
+  border: 1px solid #222;
+  color: #aaa;
+  padding: 3px 10px;
+  border-radius: 6px;
+  transition: border-color 0.2s, color 0.2s;
+  cursor: default;
+}
+.tag:hover { color: #4ade80; border-color: rgba(74,222,128,0.45); }
+
+/* ─── Status Badges ──────────────────────────────────── */
+.badge { font-size: 10px; font-family: 'Fira Code', monospace; padding: 2px 9px; border-radius: 20px; font-weight: 600; }
+.badge-active  { background: rgba(74,222,128,0.08); color: #86efac; border: 1px solid rgba(74,222,128,0.25); }
+.badge-done    { background: rgba(59,130,246,0.08); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
+.badge-standby { background: rgba(107,114,128,0.1); color: #9ca3af; border: 1px solid rgba(107,114,128,0.2);}
+
+/* ─── Bento Grid ─────────────────────────────────────── */
+.bento-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; }
+}
+
+/* ─── Grid Span Helpers (desktop only) ───────────────── */
+@media (min-width: 1024px) {
+  .col-span-3 { grid-column: span 3; }
+  .col-span-2 { grid-column: span 2; }
+  .col-span-1 { grid-column: span 1; }
+  .row-span-2 { grid-row: span 2; }
+}
