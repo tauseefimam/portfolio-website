@@ -18,9 +18,21 @@ const SocLabs = () => (
       {labs.map((lab, i) => (
         <div key={i} style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          background: '#151515', borderRadius: 8, padding: '10px 14px',
-          border: '1px solid #1f1f1f',
-        }}>
+          background: 'rgba(255,255,255,0.02)', borderRadius: 8, padding: '10px 14px',
+          border: '1px solid rgba(255,255,255,0.05)', backdropFilter: 'blur(4px)',
+          transition: 'all 0.3s ease'
+        }}
+        onMouseOver={e => {
+          e.currentTarget.style.borderColor = 'rgba(192,132,252,0.4)';
+          e.currentTarget.style.background = 'rgba(192,132,252,0.05)';
+          e.currentTarget.style.boxShadow = '0 0 12px rgba(192,132,252,0.15)';
+        }}
+        onMouseOut={e => {
+          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)';
+          e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
+          e.currentTarget.style.boxShadow = 'none';
+        }}
+        >
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             {lab.icon}
             <span style={{ fontFamily: "'Fira Code', monospace", fontSize: 12, color: '#d1d5db' }}>{lab.name}</span>

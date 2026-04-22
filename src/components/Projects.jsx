@@ -51,14 +51,23 @@ const Projects = () => (
         <div
           key={i}
           style={{
-            background: "#151515",
+            background: "rgba(255,255,255,0.02)",
             borderRadius: 10,
             padding: "14px 16px",
-            border: "1px solid #1f1f1f",
-            transition: "border-color 0.2s",
+            border: "1px solid rgba(255,255,255,0.05)",
+            transition: "all 0.3s ease",
+            backdropFilter: "blur(4px)",
           }}
-          onMouseOver={(e) => (e.currentTarget.style.borderColor = "#2a2a2a")}
-          onMouseOut={(e) => (e.currentTarget.style.borderColor = "#1f1f1f")}
+          onMouseOver={(e) => {
+            e.currentTarget.style.borderColor = "rgba(74,222,128,0.4)";
+            e.currentTarget.style.background = "rgba(74,222,128,0.05)";
+            e.currentTarget.style.boxShadow = "0 0 16px rgba(74,222,128,0.1)";
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.05)";
+            e.currentTarget.style.background = "rgba(255,255,255,0.02)";
+            e.currentTarget.style.boxShadow = "none";
+          }}
         >
           <div
             style={{
@@ -87,17 +96,17 @@ const Projects = () => (
             >
               <a
                 href={p.github}
-                style={{ color: "inherit", transition: "color 0.2s" }}
-                onMouseOver={(e) => (e.target.style.color = "#eeeeee")}
-                onMouseOut={(e) => (e.target.style.color = "#6b7280")}
+                style={{ color: "rgba(255,255,255,0.5)", transition: "all 0.3s ease", display: "flex", alignItems: "center" }}
+                onMouseOver={(e) => { e.currentTarget.style.color = "#4ade80"; e.currentTarget.style.filter = "drop-shadow(0 0 8px rgba(74,222,128,0.5))"; }}
+                onMouseOut={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.5)"; e.currentTarget.style.filter = "none"; }}
               >
                 <FiGithub size={15} />
               </a>
               <a
                 href={p.live}
-                style={{ color: "inherit", transition: "color 0.2s" }}
-                onMouseOver={(e) => (e.target.style.color = "#eeeeee")}
-                onMouseOut={(e) => (e.target.style.color = "#6b7280")}
+                style={{ color: "rgba(255,255,255,0.5)", transition: "all 0.3s ease", display: "flex", alignItems: "center" }}
+                onMouseOver={(e) => { e.currentTarget.style.color = "#60a5fa"; e.currentTarget.style.filter = "drop-shadow(0 0 8px rgba(59,130,246,0.5))"; }}
+                onMouseOut={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.5)"; e.currentTarget.style.filter = "none"; }}
               >
                 <FiExternalLink size={15} />
               </a>

@@ -29,20 +29,23 @@ const Hero = () => (
           <a href="#contact" style={{
             fontFamily: "'Fira Code', monospace", fontSize: 13,
             padding: '10px 24px', borderRadius: 8,
-            background: '#4ade80', color: '#000', fontWeight: 700,
-            textDecoration: 'none', transition: 'opacity 0.2s', display: 'inline-block'
+            background: 'rgba(74,222,128,0.1)', color: '#4ade80', fontWeight: 600,
+            border: '1px solid #4ade80', boxShadow: '0 0 12px rgba(74,222,128,0.2)',
+            textShadow: '0 0 8px rgba(74,222,128,0.4)',
+            textDecoration: 'none', transition: 'all 0.3s', display: 'inline-block'
           }}
-            onMouseOver={e => e.target.style.opacity = 0.85}
-            onMouseOut={e => e.target.style.opacity = 1}
+            onMouseOver={e => { e.target.style.background = 'rgba(74,222,128,0.2)'; e.target.style.boxShadow = '0 0 20px rgba(74,222,128,0.4)'; }}
+            onMouseOut={e => { e.target.style.background = 'rgba(74,222,128,0.1)'; e.target.style.boxShadow = '0 0 12px rgba(74,222,128,0.2)'; }}
           >./connect</a>
           <a href="#projects" style={{
             fontFamily: "'Fira Code', monospace", fontSize: 13,
             padding: '10px 24px', borderRadius: 8,
-            border: '1px solid #1f1f1f', color: '#eeeeee',
-            textDecoration: 'none', transition: 'border-color 0.2s', display: 'inline-block'
+            border: '1px solid rgba(255,255,255,0.1)', color: '#9ca3af',
+            background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(4px)',
+            textDecoration: 'none', transition: 'all 0.3s', display: 'inline-block'
           }}
-            onMouseOver={e => e.target.style.borderColor = '#4ade80'}
-            onMouseOut={e => e.target.style.borderColor = '#1f1f1f'}
+            onMouseOver={e => { e.target.style.borderColor = 'rgba(59,130,246,0.4)'; e.target.style.color = '#60a5fa'; e.target.style.background = 'rgba(59,130,246,0.05)'; e.target.style.boxShadow = '0 0 16px rgba(59,130,246,0.15)'; }}
+            onMouseOut={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)'; e.target.style.color = '#9ca3af'; e.target.style.background = 'rgba(255,255,255,0.02)'; e.target.style.boxShadow = 'none'; }}
           >ls ./projects</a>
         </div>
       </div>
@@ -50,13 +53,22 @@ const Hero = () => (
       {/* Avatar */}
       <div style={{
         width: 180, height: 180, flexShrink: 0, borderRadius: 16,
-        border: '1px solid #1f1f1f', background: '#151515',
+        border: '1px solid rgba(59,130,246,0.3)', background: 'rgba(59,130,246,0.05)',
+        boxShadow: '0 0 24px rgba(59,130,246,0.15), inset 0 0 12px rgba(59,130,246,0.1)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontFamily: "'Fira Code', monospace", color: '#6b7280', fontSize: 12,
-        transition: 'border-color 0.3s',
+        fontFamily: "'Fira Code', monospace", color: '#60a5fa', fontSize: 12,
+        transition: 'all 0.3s ease', backdropFilter: 'blur(8px)', position: 'relative', overflow: 'hidden'
       }}
-        onMouseOver={e => e.currentTarget.style.borderColor = 'rgba(74,222,128,0.35)'}
-        onMouseOut={e => e.currentTarget.style.borderColor = '#1f1f1f'}
+        onMouseOver={e => {
+          e.currentTarget.style.borderColor = 'rgba(74,222,128,0.5)';
+          e.currentTarget.style.color = '#4ade80';
+          e.currentTarget.style.boxShadow = '0 0 32px rgba(74,222,128,0.2), inset 0 0 16px rgba(74,222,128,0.15)';
+        }}
+        onMouseOut={e => {
+          e.currentTarget.style.borderColor = 'rgba(59,130,246,0.3)';
+          e.currentTarget.style.color = '#60a5fa';
+          e.currentTarget.style.boxShadow = '0 0 24px rgba(59,130,246,0.15), inset 0 0 12px rgba(59,130,246,0.1)';
+        }}
       >
         &lt;img/&gt;
       </div>

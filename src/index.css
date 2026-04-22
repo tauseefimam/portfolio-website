@@ -6,7 +6,14 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
-  background-color: #0a0a0a;
+  background-color: #000000; /* Pure pitch black base */
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(52, 211, 153, 0.04) 0%, transparent 40%),  /* extremely subtle mint green */
+    radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),  /* darker subtle mint green */
+    radial-gradient(circle at 50% 50%, rgba(20, 20, 22, 1) 0%, transparent 60%),       /* deep gray volumetric area */
+    radial-gradient(circle at 10% 90%, rgba(52, 211, 153, 0.02) 0%, transparent 40%);  /* tiny mint accent */
+  background-attachment: fixed;
+  background-size: cover;
   color: #eeeeee;
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,18 +30,36 @@ body {
 
 /* ─── Bento Card ─────────────────────────────────────── */
 .bento-card {
-  background-color: #111111;
-  border: 1px solid #1f1f1f;
-  border-radius: 16px;
+  background: rgba(17, 24, 39, 0.35);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
   padding: 24px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.8s ease;
+}
+
+.bento-card:hover::before {
+  transform: translateX(100%);
 }
 
 .bento-card:hover {
-  border-color: rgba(74, 222, 128, 0.3);
-  box-shadow: 0 0 28px rgba(74, 222, 128, 0.1), 0 0 60px rgba(74, 222, 128, 0.04);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  transform: translateY(-4px) scale(1.01);
+  background: rgba(17, 24, 39, 0.45);
 }
 
 /* ─── Terminal Header ────────────────────────────────── */
@@ -42,9 +67,21 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #1f1f1f;
+  border-bottom: 1px solid rgba(74, 222, 128, 0.15);
+  position: relative;
+}
+
+.terminal-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 30%;
+  height: 1px;
+  background: #4ade80;
+  box-shadow: 0 0 8px #4ade80;
 }
 
 /* ─── Neon Text ──────────────────────────────────────── */
@@ -57,21 +94,27 @@ body {
 .tag {
   font-family: 'Fira Code', monospace;
   font-size: 11px;
-  background: #1a1a1a;
-  border: 1px solid #222;
-  color: #aaa;
-  padding: 3px 10px;
+  background: rgba(16, 18, 27, 0.6);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #94a3b8;
+  padding: 4px 12px;
   border-radius: 6px;
-  transition: border-color 0.2s, color 0.2s;
+  transition: all 0.2s;
   cursor: default;
+  backdrop-filter: blur(4px);
 }
-.tag:hover { color: #4ade80; border-color: rgba(74,222,128,0.45); }
+.tag:hover { 
+  color: #60a5fa; 
+  border-color: rgba(59, 130, 246, 0.5); 
+  background: rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.2);
+}
 
 /* ─── Status Badges ──────────────────────────────────── */
-.badge { font-size: 10px; font-family: 'Fira Code', monospace; padding: 2px 9px; border-radius: 20px; font-weight: 600; }
-.badge-active  { background: rgba(74,222,128,0.08); color: #86efac; border: 1px solid rgba(74,222,128,0.25); }
-.badge-done    { background: rgba(59,130,246,0.08); color: #60a5fa; border: 1px solid rgba(59,130,246,0.2); }
-.badge-standby { background: rgba(107,114,128,0.1); color: #9ca3af; border: 1px solid rgba(107,114,128,0.2);}
+.badge { font-size: 10px; font-family: 'Fira Code', monospace; padding: 3px 10px; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; backdrop-filter: blur(4px); }
+.badge-active  { background: rgba(74,222,128,0.1); color: #4ade80; border: 1px solid rgba(74,222,128,0.3); box-shadow: 0 0 8px rgba(74,222,128,0.15); }
+.badge-done    { background: rgba(59,130,246,0.1); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); box-shadow: 0 0 8px rgba(59,130,246,0.15); }
+.badge-standby { background: rgba(148,163,184,0.1); color: #94a3b8; border: 1px solid rgba(148,163,184,0.3); }
 
 /* ─── Bento Grid ─────────────────────────────────────── */
 .bento-grid {

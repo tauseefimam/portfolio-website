@@ -45,20 +45,25 @@ const Contact = () => {
               href="#"
               style={{
                 padding: 8,
-                border: "1px solid #1f1f1f",
+                border: "1px solid rgba(255,255,255,0.05)",
+                backgroundColor: "rgba(255,255,255,0.02)",
                 borderRadius: 8,
-                color: "#6b7280",
+                color: "#9ca3af",
                 textDecoration: "none",
                 display: "flex",
-                transition: "border-color 0.2s, color 0.2s",
+                transition: "all 0.3s ease",
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.borderColor = "rgba(57,255,20,0.5)";
+                e.currentTarget.style.borderColor = "rgba(74,222,128,0.4)";
+                e.currentTarget.style.backgroundColor = "rgba(74,222,128,0.1)";
                 e.currentTarget.style.color = "#4ade80";
+                e.currentTarget.style.boxShadow = "0 0 12px rgba(74,222,128,0.2)";
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.borderColor = "#1f1f1f";
-                e.currentTarget.style.color = "#6b7280";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.05)";
+                e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.02)";
+                e.currentTarget.style.color = "#9ca3af";
+                e.currentTarget.style.boxShadow = "none";
               }}
             >
               <Icon size={18} />
@@ -74,14 +79,31 @@ const Contact = () => {
             alignItems: "center",
             gap: 8,
             padding: "10px 14px",
-            background: "#151515",
-            border: `1px solid ${copied ? "rgba(57,255,20,0.4)" : "#1f1f1f"}`,
+            background: copied ? "rgba(74,222,128,0.1)" : "rgba(255,255,255,0.02)",
+            border: `1px solid ${copied ? "rgba(74,222,128,0.5)" : "rgba(255,255,255,0.05)"}`,
+            boxShadow: copied ? "0 0 16px rgba(74,222,128,0.2)" : "none",
             borderRadius: 8,
             cursor: "pointer",
-            transition: "all 0.2s",
+            transition: "all 0.3s ease",
             fontFamily: "'Fira Code', monospace",
             fontSize: 12,
             color: copied ? "#4ade80" : "#9ca3af",
+          }}
+          onMouseOver={e => {
+            if (!copied) {
+              e.currentTarget.style.borderColor = "rgba(59,130,246,0.4)";
+              e.currentTarget.style.background = "rgba(59,130,246,0.1)";
+              e.currentTarget.style.color = "#60a5fa";
+              e.currentTarget.style.boxShadow = "0 0 12px rgba(59,130,246,0.2)";
+            }
+          }}
+          onMouseOut={e => {
+            if (!copied) {
+              e.currentTarget.style.borderColor = "rgba(255,255,255,0.05)";
+              e.currentTarget.style.background = "rgba(255,255,255,0.02)";
+              e.currentTarget.style.color = "#9ca3af";
+              e.currentTarget.style.boxShadow = "none";
+            }
           }}
         >
           {copied ? (

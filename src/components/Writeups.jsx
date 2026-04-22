@@ -56,19 +56,22 @@ const Writeups = () => (
             alignItems: "center",
             justifyContent: "space-between",
             padding: "12px 14px",
-            background: "#151515",
+            background: "rgba(255,255,255,0.02)",
             borderRadius: 8,
-            border: "1px solid #1f1f1f",
+            border: "1px solid rgba(255,255,255,0.05)",
             textDecoration: "none",
-            transition: "border-color 0.2s, background 0.2s",
+            transition: "all 0.3s ease",
+            backdropFilter: "blur(4px)",
           }}
           onMouseOver={(e) => {
-            e.currentTarget.style.borderColor = "#2a2a2a";
-            e.currentTarget.style.background = "#1a1a1a";
+            e.currentTarget.style.borderColor = "rgba(59,130,246,0.3)";
+            e.currentTarget.style.background = "rgba(59,130,246,0.05)";
+            e.currentTarget.style.boxShadow = "0 0 12px rgba(59,130,246,0.15)";
           }}
           onMouseOut={(e) => {
-            e.currentTarget.style.borderColor = "#1f1f1f";
-            e.currentTarget.style.background = "#151515";
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.05)";
+            e.currentTarget.style.background = "rgba(255,255,255,0.02)";
+            e.currentTarget.style.boxShadow = "none";
           }}
         >
           <div
