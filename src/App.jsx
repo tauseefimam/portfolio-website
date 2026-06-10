@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
-import SocLabs from './components/SocLabs';
+import RiskRegister from './components/RiskRegister';
 import Skills from './components/Skills';
 import Writeups from './components/Writeups';
 import Contact from './components/Contact';
 import Certs from './components/Certs';
-import { FiHome, FiTerminal, FiShield, FiBriefcase, FiBookOpen, FiMail, FiActivity, FiAward } from 'react-icons/fi';
+import { FiHome, FiTerminal, FiShield, FiBriefcase, FiBookOpen, FiMail, FiSliders, FiAward } from 'react-icons/fi';
 
 const navItems = [
   { id: 'home', label: '// Home', icon: FiHome },
   { id: 'hero', label: './whoami', icon: FiTerminal },
-  { id: 'skills', label: './arsenal', icon: FiShield },
+  { id: 'skills', label: './competencies', icon: FiShield },
   { id: 'projects', label: './projects', icon: FiBriefcase },
-  { id: 'soclabs', label: './soc_labs', icon: FiActivity },
+  { id: 'riskregister', label: './risk_register', icon: FiSliders },
   { id: 'certs', label: './certs', icon: FiAward },
-  { id: 'writeups', label: './writeups', icon: FiBookOpen },
+  { id: 'writeups', label: './research', icon: FiBookOpen },
   { id: 'contact', label: './ping_me', icon: FiMail },
 ];
 
@@ -27,7 +27,7 @@ function App() {
       case 'hero': return <Hero />;
       case 'skills': return <Skills />;
       case 'projects': return <Projects />;
-      case 'soclabs': return <SocLabs />;
+      case 'riskregister': return <RiskRegister />;
       case 'certs': return <Certs />;
       case 'writeups': return <Writeups />;
       case 'contact': return <Contact />;
@@ -38,7 +38,7 @@ function App() {
             <Hero />
             <Skills />
             <Projects />
-            <SocLabs />
+            <RiskRegister />
             <Contact />
             <Writeups />
             <Certs />

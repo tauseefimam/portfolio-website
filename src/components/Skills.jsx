@@ -2,8 +2,9 @@ import React from 'react';
 import TerminalHeader from './TerminalHeader';
 
 const categories = [
-  { name: 'Languages',      items: ['Python', 'Bash', 'C++', 'SQL'] },
-  { name: 'Security Tools', items: ['Wireshark', 'Burp Suite', 'Nmap', 'Metasploit', 'Splunk'] },
+  { name: 'Frameworks & Standards', items: ['NIST CSF 2.0', 'ISO/IEC 27001', 'GDPR', 'PCI-DSS', 'CIS Controls'] },
+  { name: 'GRC Core Skills',        items: ['Risk Assessment', 'Policy Dev', 'Internal Audit', 'Vendor Risk', 'BCP', 'IR Policy'] },
+  { name: 'Technical & Audit Tools', items: ['Python', 'Linux (CLI)', 'Wireshark', 'Splunk', 'tcpdump', 'Nmap', 'RBAC/MAC/DAC'] },
 ];
 
 const Skills = () => (

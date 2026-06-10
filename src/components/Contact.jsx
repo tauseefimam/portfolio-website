@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import TerminalHeader from './TerminalHeader';
 import { FiMail, FiGithub, FiLinkedin, FiTwitter, FiCheck } from 'react-icons/fi';
 
-const EMAIL = 'hello@tauseef.dev';
+const EMAIL = 'tauseefimam22@gmail.com';
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -39,36 +39,44 @@ const Contact = () => {
         </p>
 
         <div style={{ display: "flex", gap: 10, marginBottom: 18 }}>
-          {[FiGithub, FiLinkedin, FiTwitter].map((Icon, i) => (
-            <a
-              key={i}
-              href="#"
-              style={{
-                padding: 8,
-                border: "1px solid rgba(255,255,255,0.05)",
-                backgroundColor: "rgba(255,255,255,0.02)",
-                borderRadius: 8,
-                color: "#9ca3af",
-                textDecoration: "none",
-                display: "flex",
-                transition: "all 0.3s ease",
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.borderColor = "rgba(74,222,128,0.4)";
-                e.currentTarget.style.backgroundColor = "rgba(74,222,128,0.1)";
-                e.currentTarget.style.color = "#4ade80";
-                e.currentTarget.style.boxShadow = "0 0 12px rgba(74,222,128,0.2)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.05)";
-                e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.02)";
-                e.currentTarget.style.color = "#9ca3af";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              <Icon size={18} />
-            </a>
-          ))}
+          {[
+            { icon: FiGithub, url: 'https://github.com/tauseefimam' },
+            { icon: FiLinkedin, url: 'https://linkedin.com/in/tauseef-imam-3097b2244' }
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={i}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: 8,
+                  border: "1px solid rgba(255,255,255,0.05)",
+                  backgroundColor: "rgba(255,255,255,0.02)",
+                  borderRadius: 8,
+                  color: "#9ca3af",
+                  textDecoration: "none",
+                  display: "flex",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(74,222,128,0.4)";
+                  e.currentTarget.style.backgroundColor = "rgba(74,222,128,0.1)";
+                  e.currentTarget.style.color = "#4ade80";
+                  e.currentTarget.style.boxShadow = "0 0 12px rgba(74,222,128,0.2)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.05)";
+                  e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.02)";
+                  e.currentTarget.style.color = "#9ca3af";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                <Icon size={18} />
+              </a>
+            );
+          })}
         </div>
 
         <button

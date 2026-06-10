@@ -3,9 +3,9 @@ import TerminalHeader from './TerminalHeader';
 import { FiBookOpen, FiArrowRight } from 'react-icons/fi';
 
 const posts = [
-  { title: 'Defeating ASLR on 64-bit Linux',    tag: 'Exploit Dev', date: 'Mar 2025' },
-  { title: 'TryHackMe: Offensive Pentesting Path', tag: 'CTF',       date: 'Feb 2025' },
-  { title: 'SIEM Log Analysis with Splunk',       tag: 'Blue Team',  date: 'Jan 2025' },
+  { title: 'LinkedIn Social Engineering & Phishing Analysis', tag: 'Threat Intel', date: 'Dec 2024' },
+  { title: 'Designing an ISO 27001 & NIST CSF Gap Assessment', tag: 'Compliance', date: 'Feb 2025' },
+  { title: 'IT Audit: Designing Access Control Control Tests', tag: 'Audit', date: 'Jan 2025' }
 ];
 
 const Writeups = () => (
@@ -13,7 +13,7 @@ const Writeups = () => (
     className="bento-card col-span-2"
     style={{ display: "flex", flexDirection: "column" }}
   >
-    <TerminalHeader title="writeups" />
+    <TerminalHeader title="research" />
     <div
       style={{
         display: "flex",
@@ -29,7 +29,7 @@ const Writeups = () => (
           fontSize: 15,
         }}
       >
-        Latest Logs
+        Research & Analysis
       </h3>
       <a
         href="#"

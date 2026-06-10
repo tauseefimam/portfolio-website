@@ -4,10 +4,18 @@ import { FiAward, FiExternalLink } from 'react-icons/fi';
 
 const certs = [
   { 
-    name: 'Google Cybersecurity Certificate',
-    issuer: 'Google',
-    date: 'Active',
+    name: 'Google Cybersecurity Professional Certificate',
+    issuer: 'Google / Coursera',
+    date: '2024',
     link: '#', 
+    desc: 'Completed 8-course program covering security frameworks, network security, Linux, Python scripting, and hands-on threat analysis with Splunk, Chronicle, and Wireshark.'
+  },
+  { 
+    name: 'CompTIA Security+',
+    issuer: 'CompTIA',
+    date: 'In Progress',
+    link: '#',
+    desc: 'Currently studying core domains: Threats & Vulnerabilities, Security Architecture, Implementation, Operations, and Governance.'
   }
 ];
 
@@ -44,12 +52,13 @@ const Certs = () => (
               <FiAward size={18} style={{ color: '#4ade80' }} />
             </div>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4, paddingRight: 12 }}>
               <span style={{ fontFamily: "'Fira Code', monospace", fontSize: 13, color: '#eeeeee' }}>{cert.name}</span>
               <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: '#9ca3af' }}>{cert.issuer} &bull; <span style={{ color: '#4ade80' }}>{cert.date}</span></span>
+              <p style={{ fontSize: 11, color: '#9ca3af', marginTop: 4, lineHeight: 1.4 }}>{cert.desc}</p>
             </div>
           </div>
-          <FiExternalLink size={14} style={{ color: '#6b7280' }} />
+          <FiExternalLink size={14} style={{ color: '#6b7280', flexShrink: 0 }} />
         </a>
       ))}
     </div>

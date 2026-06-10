@@ -1,5 +1,6 @@
 import React from 'react';
 import TerminalHeader from './TerminalHeader';
+import { FiShield } from 'react-icons/fi';
 
 const Hero = () => (
   <div
@@ -12,17 +13,16 @@ const Hero = () => (
       {/* Text */}
       <div style={{ flex: 1, minWidth: 220 }}>
         <p style={{ fontFamily: "'Fira Code', monospace", color: '#4ade80', fontSize: 13, marginBottom: 8 }}>
-          &gt; Hello, World!
+          &gt; session initialized
         </p>
         <h1 style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800, fontSize: 'clamp(28px, 4vw, 48px)', lineHeight: 1.15, marginBottom: 12 }}>
           I'm <span style={{ color: '#4ade80', textShadow: '0 0 16px rgba(74,222,128,0.45), 0 0 32px rgba(74,222,128,0.15)' }}>Tauseef Imam</span>
         </h1>
-        <h2 style={{ fontFamily: "'Fira Code', monospace", color: '#6b7280', fontSize: 'clamp(13px, 2vw, 18px)', marginBottom: 20 }}>
-          SOC Analyst · v1.0.0
+        <h2 style={{ fontFamily: "'Fira Code', monospace", color: '#9ca3af', fontSize: 'clamp(13px, 2vw, 17px)', marginBottom: 20 }}>
+          GRC & Information Security Specialist · v1.2.0
         </h2>
-        <p style={{ color: '#9ca3af', fontSize: 14, lineHeight: 1.7, maxWidth: 520 }}>
-          Specializing in vulnerability analysis, threat detection, and SOC operations.
-          Passionate about offensive security, CTF challenges, and building resilient systems.
+        <p style={{ color: '#d1d5db', fontSize: 14, lineHeight: 1.7, maxWidth: 520 }}>
+          Computer Science student at Sukkur IBA University specializing in Information Security Governance, Risk, and Compliance. Hand-on experience constructing NIST CSF 2.0 gap assessments, drafting security policies, conducting vendor audits, and designing risk treatment registers.
         </p>
 
         <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
@@ -36,7 +36,7 @@ const Hero = () => (
           }}
             onMouseOver={e => { e.target.style.background = 'rgba(74,222,128,0.2)'; e.target.style.boxShadow = '0 0 20px rgba(74,222,128,0.4)'; }}
             onMouseOut={e => { e.target.style.background = 'rgba(74,222,128,0.1)'; e.target.style.boxShadow = '0 0 12px rgba(74,222,128,0.2)'; }}
-          >./connect</a>
+          >./ping_me</a>
           <a href="#projects" style={{
             fontFamily: "'Fira Code', monospace", fontSize: 13,
             padding: '10px 24px', borderRadius: 8,
@@ -50,27 +50,28 @@ const Hero = () => (
         </div>
       </div>
 
-      {/* Avatar */}
+      {/* Avatar Badge */}
       <div style={{
         width: 180, height: 180, flexShrink: 0, borderRadius: 16,
-        border: '1px solid rgba(59,130,246,0.3)', background: 'rgba(59,130,246,0.05)',
-        boxShadow: '0 0 24px rgba(59,130,246,0.15), inset 0 0 12px rgba(59,130,246,0.1)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontFamily: "'Fira Code', monospace", color: '#60a5fa', fontSize: 12,
+        border: '1px solid rgba(74,222,128,0.3)', background: 'rgba(74,222,128,0.02)',
+        boxShadow: '0 0 24px rgba(74,222,128,0.08), inset 0 0 12px rgba(74,222,128,0.05)',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 12,
+        fontFamily: "'Fira Code', monospace", color: '#4ade80', fontSize: 12,
         transition: 'all 0.3s ease', backdropFilter: 'blur(8px)', position: 'relative', overflow: 'hidden'
       }}
         onMouseOver={e => {
-          e.currentTarget.style.borderColor = 'rgba(74,222,128,0.5)';
-          e.currentTarget.style.color = '#4ade80';
-          e.currentTarget.style.boxShadow = '0 0 32px rgba(74,222,128,0.2), inset 0 0 16px rgba(74,222,128,0.15)';
+          e.currentTarget.style.borderColor = 'rgba(96,165,250,0.5)';
+          e.currentTarget.style.color = '#60a5fa';
+          e.currentTarget.style.boxShadow = '0 0 32px rgba(96,165,250,0.2), inset 0 0 16px rgba(96,165,250,0.15)';
         }}
         onMouseOut={e => {
-          e.currentTarget.style.borderColor = 'rgba(59,130,246,0.3)';
-          e.currentTarget.style.color = '#60a5fa';
-          e.currentTarget.style.boxShadow = '0 0 24px rgba(59,130,246,0.15), inset 0 0 12px rgba(59,130,246,0.1)';
+          e.currentTarget.style.borderColor = 'rgba(74,222,128,0.3)';
+          e.currentTarget.style.color = '#4ade80';
+          e.currentTarget.style.boxShadow = '0 0 24px rgba(74,222,128,0.08), inset 0 0 12px rgba(74,222,128,0.05)';
         }}
       >
-        &lt;img/&gt;
+        <FiShield size={54} style={{ filter: 'drop-shadow(0 0 12px currentColor)' }} />
+        <span style={{ fontSize: 9, letterSpacing: 2, fontWeight: 600, opacity: 0.8 }}>GRC_SECURE_ID</span>
       </div>
     </div>
   </div>
