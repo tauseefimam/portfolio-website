@@ -3,11 +3,11 @@ import TerminalHeader from './TerminalHeader';
 import { FiAward, FiExternalLink } from 'react-icons/fi';
 
 const certs = [
-  { 
+  {
     name: 'Google Cybersecurity Professional Certificate',
     issuer: 'Google / Coursera',
-    date: '2024',
-    link: '#', 
+    date: '2026',
+    link: 'https://www.coursera.org/account/accomplishments/specialization/I57WQEUNFM2J',
     desc: 'Completed 8-course program covering security frameworks, network security, Linux, Python scripting, and hands-on threat analysis with Splunk, Chronicle, and Wireshark.'
   }
 ];

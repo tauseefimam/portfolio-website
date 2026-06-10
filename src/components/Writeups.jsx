@@ -3,9 +3,8 @@ import TerminalHeader from './TerminalHeader';
 import { FiBookOpen, FiArrowRight } from 'react-icons/fi';
 
 const posts = [
-  { title: 'LinkedIn Social Engineering & Phishing Analysis', tag: 'Threat Intel', date: 'Dec 2024' },
-  { title: 'Designing an ISO 27001 & NIST CSF Gap Assessment', tag: 'Compliance', date: 'Feb 2025' },
-  { title: 'IT Audit: Designing Access Control Control Tests', tag: 'Audit', date: 'Jan 2025' }
+  { title: 'Designing an ISO 27001 & NIST CSF Gap Assessment', tag: 'Compliance', date: 'Feb 2026' },
+  { title: 'IT Audit: Designing Access Control Control Tests', tag: 'Audit', date: 'March 2026' }
 ];
 
 const Writeups = () => (
