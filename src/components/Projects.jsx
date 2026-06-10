@@ -20,15 +20,6 @@ const projects = [
     github: 'https://github.com/tauseefimam/prompt-injection-detector',
     live: '#',
     isGrc: false
-  },
-  {
-    id: 'social-engineering',
-    title: 'Social Engineering Awareness Analysis',
-    desc: 'Forensic analysis of a LinkedIn social engineering and phishing campaign. Authored public analysis posts breaking down attack vectors (pretexting, authority exploitation), red flags, and defensive recommendations.',
-    tech: ['Social Engineering', 'Threat Intel', 'Security Awareness'],
-    github: 'https://github.com/tauseefimam/social-engineering-analysis',
-    live: '#',
-    isGrc: false
   }
 ];
 

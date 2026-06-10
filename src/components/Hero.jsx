@@ -5,7 +5,7 @@ import { FiShield } from 'react-icons/fi';
 const Hero = () => (
   <div
     className="bento-card col-span-3 row-span-2"
-    style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: 260 }}
+    style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: 20, minHeight: 260 }}
   >
     <TerminalHeader title="whoami" />
 

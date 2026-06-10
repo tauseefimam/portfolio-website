@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import TerminalHeader from './TerminalHeader';
-import { FiAlertTriangle, FiCheckCircle, FiShield, FiTrendingDown, FiX } from 'react-icons/fi';
+import { FiAlertTriangle, FiCheckCircle, FiShield, FiTrendingDown } from 'react-icons/fi';
 
 const risks = [
   {
@@ -54,15 +54,15 @@ const risks = [
 ];
 
 const RiskRegister = () => {
-  const [selectedRisk, setSelectedRisk] = useState(null);
+  const [selectedRisk, setSelectedRisk] = useState(risks[0]);
 
   return (
-    <div className="bento-card col-span-1" style={{ display: 'flex', flexDirection: 'column', position: 'relative' }}>
+    <div className="bento-card col-span-2" style={{ display: 'flex', flexDirection: 'column' }}>
       <TerminalHeader title="risk_register" />
       
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
         <h3 style={{ fontFamily: "'Fira Code', monospace", color: '#eeeeee', fontSize: 14 }}>
-          Risk Assessment Matrix
+          Risk Assessment & Treatment Registry
         </h3>
         <span style={{ fontSize: 10, fontFamily: "'Fira Code', monospace", color: '#4ade80', background: 'rgba(74, 222, 128, 0.1)', padding: '2px 8px', borderRadius: 4 }}>
           4 Active Risks
@@ -70,103 +70,103 @@ const RiskRegister = () => {
       </div>
 
       <p style={{ fontSize: 11, color: '#9ca3af', marginBottom: 16, lineHeight: 1.5 }}>
-        Real-time risk treatment and classification registry. Click a risk to view control treatments and residual risk scores.
+        Interactive risk treatment database. Select a risk from the register to examine its associated threat vectors, treatment controls, and residual threat metrics.
       </p>
 
-      {/* Risks List */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-        {risks.map((risk) => (
-          <button
-            key={risk.id}
-            onClick={() => setSelectedRisk(risk)}
-            style={{
-              display: 'flex', flexDirection: 'column', gap: 6, textAlign: 'left',
-              background: 'rgba(255,255,255,0.02)', borderRadius: 8, padding: '10px 12px',
-              border: '1px solid rgba(255,255,255,0.05)', backdropFilter: 'blur(4px)',
-              cursor: 'pointer', transition: 'all 0.3s ease', width: '100%'
-            }}
-            onMouseOver={e => {
-              e.currentTarget.style.borderColor = 'rgba(74, 222, 128, 0.3)';
-              e.currentTarget.style.background = 'rgba(74, 222, 128, 0.04)';
-              e.currentTarget.style.boxShadow = '0 0 10px rgba(74, 222, 128, 0.05)';
-            }}
-            onMouseOut={e => {
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)';
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-              <span style={{ fontFamily: "'Fira Code', monospace", fontSize: 10, color: '#6b7280' }}>
-                {risk.id} &bull; {risk.category}
-              </span>
-              <span style={{
-                fontSize: 9, fontFamily: "'Fira Code', monospace", fontWeight: 700,
-                color: risk.color, backgroundColor: risk.bg,
-                padding: '1px 6px', borderRadius: 4, border: `1px solid ${risk.color}44`
-              }}>
-                {risk.severity}
-              </span>
-            </div>
-            <span style={{ fontSize: 12, fontWeight: 600, color: '#e5e7eb' }}>
-              {risk.title}
-            </span>
-          </button>
-        ))}
-      </div>
+      {/* Split Pane */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, flex: 1 }}>
+        {/* Left Pane: Risk List */}
+        <div style={{ flex: 1, minWidth: 240, display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {risks.map((risk) => {
+            const isSelected = selectedRisk.id === risk.id;
+            return (
+              <button
+                key={risk.id}
+                onClick={() => setSelectedRisk(risk)}
+                style={{
+                  display: 'flex', flexDirection: 'column', gap: 6, textAlign: 'left',
+                  background: isSelected ? 'rgba(74, 222, 128, 0.08)' : 'rgba(255,255,255,0.02)', 
+                  borderRadius: 8, padding: '10px 12px',
+                  border: `1px solid ${isSelected ? 'rgba(74, 222, 128, 0.4)' : 'rgba(255,255,255,0.05)'}`, 
+                  backdropFilter: 'blur(4px)',
+                  cursor: 'pointer', transition: 'all 0.3s ease', width: '100%',
+                  boxShadow: isSelected ? '0 0 12px rgba(74, 222, 128, 0.1)' : 'none'
+                }}
+                onMouseOver={e => {
+                  if (!isSelected) {
+                    e.currentTarget.style.borderColor = 'rgba(74, 222, 128, 0.3)';
+                    e.currentTarget.style.background = 'rgba(74, 222, 128, 0.04)';
+                  }
+                }}
+                onMouseOut={e => {
+                  if (!isSelected) {
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+                  }
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
+                  <span style={{ fontFamily: "'Fira Code', monospace", fontSize: 9, color: isSelected ? '#4ade80' : '#6b7280' }}>
+                    {risk.id} &bull; {risk.category}
+                  </span>
+                  <span style={{
+                    fontSize: 8, fontFamily: "'Fira Code', monospace", fontWeight: 700,
+                    color: risk.color, backgroundColor: risk.bg,
+                    padding: '1px 5px', borderRadius: 4, border: `1px solid ${risk.color}44`
+                  }}>
+                    {risk.severity}
+                  </span>
+                </div>
+                <span style={{ fontSize: 11, fontWeight: 600, color: isSelected ? '#4ade80' : '#e5e7eb' }}>
+                  {risk.title}
+                </span>
+              </button>
+            );
+          })}
+        </div>
 
-      {/* Interactive Detail Modal Overlays (within card) */}
-      {selectedRisk && (
+        {/* Right Pane: Details Sheet */}
         <div style={{
-          position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-          background: 'rgba(5, 5, 10, 0.95)', backdropFilter: 'blur(16px)',
-          borderRadius: 20, padding: 18, zIndex: 10, display: 'flex', flexDirection: 'column',
-          justifyContent: 'space-between', border: '1px solid rgba(74, 222, 128, 0.35)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.8)'
+          flex: 1.2, minWidth: 260, background: 'rgba(255,255,255,0.01)',
+          border: '1px solid rgba(255,255,255,0.04)', borderRadius: 10, padding: 14,
+          display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+          minHeight: 220
         }}>
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: 8 }}>
-              <span style={{ fontFamily: "'Fira Code', monospace", fontSize: 11, color: '#4ade80', fontWeight: 600 }}>
-                {selectedRisk.id} Details
+              <span style={{ fontFamily: "'Fira Code', monospace", fontSize: 10, color: '#4ade80', fontWeight: 600 }}>
+                {selectedRisk.id} Control Sheet
               </span>
-              <button
-                onClick={() => setSelectedRisk(null)}
-                style={{
-                  background: 'none', border: 'none', color: '#9ca3af', cursor: 'pointer',
-                  display: 'flex', padding: 4
-                }}
-                onMouseOver={e => e.currentTarget.style.color = '#ef4444'}
-                onMouseOut={e => e.currentTarget.style.color = '#9ca3af'}
-              >
-                <FiX size={16} />
-              </button>
+              <span style={{ fontSize: 9, color: '#9ca3af', fontFamily: "'Fira Code', monospace" }}>
+                Status: Active Plan
+              </span>
             </div>
 
-            <h4 style={{ fontSize: 14, fontWeight: 700, color: '#f3f4f6', marginBottom: 8 }}>
+            <h4 style={{ fontSize: 13, fontWeight: 700, color: '#f3f4f6', marginBottom: 8 }}>
               {selectedRisk.title}
             </h4>
 
-            <p style={{ fontSize: 11, color: '#9ca3af', lineHeight: 1.5, marginBottom: 12 }}>
+            <p style={{ fontSize: 10.5, color: '#9ca3af', lineHeight: 1.5, marginBottom: 12 }}>
               {selectedRisk.desc}
             </p>
 
             {/* Risk Scores Compare Grid */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 12 }}>
-              <div style={{ background: 'rgba(255,255,255,0.02)', borderRadius: 6, padding: '8px 10px', border: '1px solid rgba(255,255,255,0.04)' }}>
-                <div style={{ fontSize: 9, color: '#9ca3af', textTransform: 'uppercase', marginBottom: 2 }}>Inherent Risk</div>
+              <div style={{ background: 'rgba(255,255,255,0.02)', borderRadius: 6, padding: '6px 8px', border: '1px solid rgba(255,255,255,0.04)' }}>
+                <div style={{ fontSize: 8, color: '#9ca3af', textTransform: 'uppercase', marginBottom: 2 }}>Inherent Risk</div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
-                  <span style={{ fontSize: 16, fontWeight: 700, color: selectedRisk.color }}>{selectedRisk.inherent.score}</span>
-                  <span style={{ fontSize: 9, color: '#6b7280' }}>(L:{selectedRisk.inherent.L} x I:{selectedRisk.inherent.I})</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: selectedRisk.color }}>{selectedRisk.inherent.score}</span>
+                  <span style={{ fontSize: 8, color: '#6b7280' }}>(L:{selectedRisk.inherent.L} x I:{selectedRisk.inherent.I})</span>
                 </div>
               </div>
 
-              <div style={{ background: 'rgba(74, 222, 128, 0.02)', borderRadius: 6, padding: '8px 10px', border: '1px solid rgba(74, 222, 128, 0.1)' }}>
-                <div style={{ fontSize: 9, color: '#4ade80', textTransform: 'uppercase', marginBottom: 2, display: 'flex', alignItems: 'center', gap: 4 }}>
+              <div style={{ background: 'rgba(74, 222, 128, 0.02)', borderRadius: 6, padding: '6px 8px', border: '1px solid rgba(74, 222, 128, 0.1)' }}>
+                <div style={{ fontSize: 8, color: '#4ade80', textTransform: 'uppercase', marginBottom: 2, display: 'flex', alignItems: 'center', gap: 4 }}>
                   Residual Risk <FiTrendingDown size={10} />
                 </div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
-                  <span style={{ fontSize: 16, fontWeight: 700, color: '#4ade80' }}>{selectedRisk.residual.score}</span>
-                  <span style={{ fontSize: 9, color: '#6b7280' }}>(L:{selectedRisk.residual.L} x I:{selectedRisk.residual.I})</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: '#4ade80' }}>{selectedRisk.residual.score}</span>
+                  <span style={{ fontSize: 8, color: '#6b7280' }}>(L:{selectedRisk.residual.L} x I:{selectedRisk.residual.I})</span>
                 </div>
               </div>
             </div>
@@ -177,27 +177,13 @@ const RiskRegister = () => {
             }}>
               <FiShield size={16} style={{ color: '#60a5fa', flexShrink: 0, marginTop: 1 }} />
               <div>
-                <div style={{ fontSize: 9, color: '#60a5fa', fontWeight: 600, textTransform: 'uppercase', marginBottom: 1 }}>Control Treatment</div>
-                <div style={{ fontSize: 10, color: '#d1d5db', lineHeight: 1.4 }}>{selectedRisk.treatment}</div>
+                <div style={{ fontSize: 8.5, color: '#60a5fa', fontWeight: 600, textTransform: 'uppercase', marginBottom: 1 }}>Control Treatment</div>
+                <div style={{ fontSize: 9.5, color: '#d1d5db', lineHeight: 1.4 }}>{selectedRisk.treatment}</div>
               </div>
             </div>
           </div>
-
-          <button
-            onClick={() => setSelectedRisk(null)}
-            style={{
-              width: '100%', padding: '8px 0', borderRadius: 6,
-              background: 'rgba(74, 222, 128, 0.1)', border: '1px solid rgba(74, 222, 128, 0.3)',
-              color: '#4ade80', fontFamily: "'Fira Code', monospace", fontSize: 11,
-              cursor: 'pointer', transition: 'all 0.3s'
-            }}
-            onMouseOver={e => { e.currentTarget.style.background = 'rgba(74, 222, 128, 0.2)' }}
-            onMouseOut={e => { e.currentTarget.style.background = 'rgba(74, 222, 128, 0.1)' }}
-          >
-            Acknowledge Treatment
-          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 };

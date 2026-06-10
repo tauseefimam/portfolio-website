@@ -9,13 +9,6 @@ const certs = [
     date: '2024',
     link: '#', 
     desc: 'Completed 8-course program covering security frameworks, network security, Linux, Python scripting, and hands-on threat analysis with Splunk, Chronicle, and Wireshark.'
-  },
-  { 
-    name: 'CompTIA Security+',
-    issuer: 'CompTIA',
-    date: 'In Progress',
-    link: '#',
-    desc: 'Currently studying core domains: Threats & Vulnerabilities, Security Architecture, Implementation, Operations, and Governance.'
   }
 ];
 
